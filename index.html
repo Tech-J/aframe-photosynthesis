@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./aframe.min.js"></script>
+    <script src="./aframe-particle-system-component.min.js"></script> 
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+    <title>Aframe Photosynthesis</title>
+</head>
+<body>
+<a-scene>
+    <a-assets>
+        <a-asset-item id="Cartoon-low-poly-trees-obj" src="./Cartoon-low-poly-trees.obj"></a-asset-item>    
+        <a-asset-item id="Cartoon-low-poly-trees-mtl" src="./Cartoon-low-poly-trees.mtl"></a-asset-item>   
+    </a-assets>
+
+    <!-- this is the ozone layer -->
+    <a-ring color="rgb(100,100,200)"  material="opacity:0.1" width="100" rotation="90 0 0" position="0 30 0" scale=" 100 100 100">
+        <a-text font="kelsonsans" value="Ozone Layer" width="6" position="-2 -20 -5.5" color="red"
+        rotation="-90 0 0" scale="3 3 3"></a-text>
+    </a-ring>
+
+    <!-- THis is the sun -->
+  
+    <a-sphere 
+    src="./sun_texture.jpg"
+    radius="20" 
+    position="0 150 -200" 
+    rotation="-90 0 0">
+        <!--  ray pointing left-->
+        <a-entity 
+        scale="10 10 10"
+        position="0 0 0" 
+        rotation="180 45 0" 
+        particle-system="color: #FDB813;velocityValue:0 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "	
+        rotationAngle="3.14"></a-entity>
+        <!--  ray pointing left up-->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="-90 0 0" 
+        particle-system="color: #FDB813;velocityValue:-100 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "	
+        rotationAngle="3.14"></a-entity>
+        <!--  ray pointing right up-->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="-90 -90 0" 
+        particle-system="color: #FDB813;velocityValue:0 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "	
+        rotationAngle="3.14"></a-entity>
+        <!-- ray pointing right -->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="180 0 0" 
+        particle-system="color: #FDB813;velocityValue:100 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "	
+        rotationAngle="3.14"></a-entity>
+        <!-- ray pointing down -->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="90 0 0" 
+        particle-system="color: #FDB813;velocityValue:0 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "	
+        rotationAngle="3.14"></a-entity>
+        <!-- ray pointing right down -->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="45 90 0" 
+        particle-system="color: #FDB813;velocityValue:0 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 "></a-entity>
+        <!-- ray pointing left down -->
+        <a-entity 
+        scale="2 2 2"
+        position="0 0 0" 
+        rotation="0 -90 0" 
+        particle-system="color: #FDB813;velocityValue:0 10 100;texture:./sun.png;size:5;" 
+        rotationAxis=" 4 4 7 ">
+        </a-entity>
+    </a-sphere>
+
+
+    <!-- this is trees for photosynthesis -->
+    <a-entity 
+    obj-model="obj: #Cartoon-low-poly-trees-obj; mtl: #Cartoon-low-poly-trees-mtl"
+    position= "0 0 -5"
+    scale= ".10 .10 .10">
+
+        <a-entity 
+        position="-30 20.25 -5" 
+        rotation="-90 -90 0" 
+        particle-system="size:.5;positionSpread:20 0 10;texture:./oxygen.png;particleCount:100;"> 
+        </a-entity>
+
+        <a-entity 
+        position="30 20.25 -5" 
+        rotation="-90 90 0" 
+        particle-system="color: white;size:1;positionSpread:0 0 20;texture:./sugar.png;particleCount:100;"> 
+        </a-entity>
+
+        <a-ocean
+        position="-15 -1 0"
+        particle-system="size:1;texture:./water.png;particleCount:3;positionSpread:0 0 5;"> 
+        </a-ocean>
+
+        <a-ocean
+        position="20 -1 0"
+        particle-system="size:1;texture:./water.png;particleCount:3;positionSpread:0 0 5;">
+        </a-ocean>
+
+        <a-text 
+        font="kelsonsans" 
+        value="Oxygen" 
+        width="8" 
+        position="-13 15 30"
+        rotation="0 0 0" 
+        color="black" 
+        scale="3 3 3"></a-text>
+
+        <a-text 
+        font="kelsonsans" 
+        value="Water" 
+        width="8" 
+        position="-8 8 30"
+        rotation="0 0 0" 
+        color="black" 
+        scale="3 3 3"></a-text>
+
+        <a-text 
+        font="kelsonsans" 
+        value="Water" 
+        width="8" 
+        position="7 8 30"
+        rotation="0 0 0" 
+        color="black" 
+        scale="3 3 3"></a-text>
+
+        <a-text 
+        font="kelsonsans" 
+        value="Glucose\n(Sugar)" 
+        width="8" 
+        position="13 15 30"
+        rotation="0 0 0" 
+        color="black" 
+        scale="3 3 3"></a-text>
+
+    </a-entity>
+
+</a-scene>
+
+
+</body>
+</html>
